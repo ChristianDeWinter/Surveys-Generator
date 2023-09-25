@@ -3,44 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Survey Question Configuration</title>
+    <title>Question Form</title>
+    <!-- Include your CSS file for styling -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    <h1>Survey Question Configuration</h1>
-
-    <!-- Question Form -->
     <form id="question-form">
         <label for="question-type">Question Type:</label>
         <select id="question-type">
-            <option value="multiple-choice">Multiple Choice</option>
             <option value="open-ended">Open-Ended</option>
-        </select>
-
+            <option value="multiple-choice">Multiple Choice</option>
+        </select><br>
         <label for="question-text">Question Text:</label>
-        <input type="text" id="question-text" placeholder="Enter your question text" required>
-
-        <label for="multiple-choice-answers">Number of Multiple Choice Answers (1-4):</label>
-        <input type="number" id="multiple-choice-answers" min="1" max="4" disabled>
-
-        <div id="options-container">
-            <!-- dynamically added here -->
-        </div>
-
+        <input type="text" id="question-text"><br>
         <label for="required-question">Required Question:</label>
-        <input type="checkbox" id="required-question">
-
+        <input type="checkbox" id="required-question"><br>
         <label for="time-limit">Time Limit (seconds):</label>
-        <input type="number" id="time-limit" placeholder="Enter time limit (optional)">
-
+        <input type="number" id="time-limit"><br>
+        <div id="options-container" style="display: none;">
+            <label for="option-text">Option Text:</label>
+            <input type="text" id="option-text">
+            <button type="button" id="add-option">Add Option</button>
+            <button type="button" id="remove-option">Remove Option</button>
+        </div>
         <button type="button" id="add-question">Add Question</button>
     </form>
-
-    <!-- Question List -->
-    <div id="question-list">
-        <!-- Added questions will be displayed here -->
-    </div>
-
+    <div id="timer-display"></div>
+    <div id="question-list"></div>
     <script src="script.js"></script>
 </body>
 </html>
