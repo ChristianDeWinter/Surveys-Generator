@@ -1,37 +1,100 @@
+/* Reset default browser styles */
+body, h1, h2, h3, p, ul, li, form, input, select, label, button, textarea {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply a background color and center the content */
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-h1 {
-    text-align: center;
-}
-
-form {
-    border: 1px solid #ccc;
+/* Style the form container */
+#question-form {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-top: 20px;
-    background-color: #f9f9f9;
+    width: 400px;
 }
 
-label, input, select {
+/* Style form elements */
+label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
-#options-container {
-    margin-top: 10px;
+input[type="text"],
+input[type="number"],
+select,
+button,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
 }
 
-button {
-    margin-top: 10px;
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Style the "Add Option" and "Remove Option" buttons */
+#add-option,
+#remove-option {
     background-color: #007BFF;
-    color: white;
+    color: #fff;
     border: none;
-    padding: 10px 20px;
+    border-radius: 3px;
+    padding: 8px 16px;
     cursor: pointer;
+    font-size: 14px;
 }
 
+#remove-option {
+    background-color: #DC3545;
+}
+
+/* Style the question list */
 #question-list {
     margin-top: 20px;
+}
+
+.question-item {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Style the timer display */
+#timer-display {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Style the radio buttons */
+input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Add some spacing to the options */
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
 }
