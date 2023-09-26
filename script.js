@@ -6,15 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const questionTypeSelect = document.getElementById("question-type");
     const addOptionButton = document.getElementById("add-option");
     const removeOptionButton = document.getElementById("remove-option");
-    const timeLimitInput = document.getElementById("time-limit");
-    const timerDisplay = document.getElementById("timer-display");
     const optionText = document.getElementById("option-text");
+    const correctAnswerInput = document.getElementById("correct-answer"); // Add this line
 
     let optionCount = 0;
-    let timer;
 
     questionTypeSelect.addEventListener("change", function () {
-        // Enable or disable the options container based on question type
         const isMultipleChoice = this.value === "multiple-choice";
         const isOpenEnded = this.value === "open-ended";
         optionsContainer.style.display = isMultipleChoice ? "block" : "none";
@@ -25,7 +22,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addOptionButton.addEventListener("click", function () {
-        // Limit the number of options to 4
         if (optionCount < 4) {
             addMultipleChoiceOptionInput(optionText.value);
             optionText.value = "";
@@ -34,7 +30,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     removeOptionButton.addEventListener("click", function () {
-        // Remove the last added option
         const optionInputs = document.querySelectorAll(".option-input");
         if (optionInputs.length > 0) {
             const lastOptionInput = optionInputs[optionInputs.length - 1];
@@ -44,18 +39,16 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     addQuestionButton.addEventListener("click", function () {
-        // Get user input values
         const questionType = document.getElementById("question-type").value;
         const questionText = document.getElementById("question-text").value;
         const isRequiredQuestion = document.getElementById("required-question").checked;
-        const timeLimit = parseInt(timeLimitInput.value) || null;
+        const correctAnswer = correctAnswerInput.value; // Get the correct answer value
 
-        // Create a new question object
         const question = {
             type: questionType,
             text: questionText,
             required: isRequiredQuestion,
-            timeLimit: timeLimit,
+            correctAnswer: correctAnswer, // Include the correct answer in the question object
             options: [],
         };
 
@@ -78,13 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         addQuestionToList(question);
-
-        timerDisplay.textContent = "";
-        clearInterval(timer);
-
-        if (timeLimit) {
-            startTimer(timeLimit);
-        }
     });
 
     function addQuestionToList(question) {
@@ -94,7 +80,6 @@ document.addEventListener("DOMContentLoaded", function () {
             <p>Type: ${question.type}</p>
             <p>Question: ${question.text}</p>
             <p>Required: ${question.required ? "Yes" : "No"}</p>
-            <p>Time Limit: ${question.timeLimit || "Not set"}</p>
             ${question.type === "open-ended" ? `
                 <label for="open-ended-answer">Your Answer:</label>
                 <textarea id="open-ended-answer" rows="4" cols="50"></textarea>
@@ -119,29 +104,5 @@ document.addEventListener("DOMContentLoaded", function () {
         optionInput.type = "text";
         optionInput.value = initialOptionText;
         optionsContainer.appendChild(optionInput);
-    }
-
-    function startTimer(timeLimit) {
-        let remainingTime = timeLimit;
-        timerDisplay.textContent = `Time Left: ${remainingTime} seconds`;
-
-        timer = setInterval(function () {
-            remainingTime--;
-
-            if (remainingTime < 0) {
-                clearInterval(timer);
-                timerDisplay.textContent = "Time's up!";
-                disableOptions();
-            } else {
-                timerDisplay.textContent = `Time Left: ${remainingTime} seconds`;
-            }
-        }, 1000);
-    }
-
-    function disableOptions() {
-        const radioInputs = document.querySelectorAll(".question-item input[type='radio']");
-        radioInputs.forEach((radio) => {
-            radio.disabled = true;
-        });
     }
 });
