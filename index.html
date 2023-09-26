@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Question Form</title>
     <!-- Include your CSS file for styling -->
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <form id="question-form">
@@ -18,8 +18,8 @@
         <input type="text" id="question-text"><br>
         <label for="required-question">Required Question:</label>
         <input type="checkbox" id="required-question"><br>
-        <label for="time-limit">Time Limit (seconds):</label>
-        <input type="number" id="time-limit"><br>
+        <label for="correct-answer">Correct Answer:</label> <!-- Add the correct answer input field -->
+        <input type="text" id="correct-answer"><br> <!-- Add the correct answer input field -->
         <div id="options-container" style="display: none;">
             <label for="option-text">Option Text:</label>
             <input type="text" id="option-text">
@@ -28,7 +28,6 @@
         </div>
         <button type="button" id="add-question">Add Question</button>
     </form>
-    <div id="timer-display"></div>
     <div id="question-list"></div>
     <script src="script.js"></script>
 </body>
