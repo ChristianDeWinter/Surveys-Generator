@@ -41,13 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     addQuestionButton.addEventListener("click", function () {
         const questionType = document.getElementById("question-type").value;
         const questionText = document.getElementById("question-text").value;
-        const isRequiredQuestion = document.getElementById("required-question").checked;
         const correctAnswer = correctAnswerInput.value; // Get the correct answer value
 
         const question = {
             type: questionType,
             text: questionText,
-            required: isRequiredQuestion,
             correctAnswer: correctAnswer, // Include the correct answer in the question object
             options: [],
         };
@@ -79,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
         questionItem.innerHTML = `
             <p>Type: ${question.type}</p>
             <p>Question: ${question.text}</p>
-            <p>Required: ${question.required ? "Yes" : "No"}</p>
             ${question.type === "open-ended" ? `
                 <label for="open-ended-answer">Your Answer:</label>
                 <textarea id="open-ended-answer" rows="4" cols="50"></textarea>
