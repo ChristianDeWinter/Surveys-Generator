@@ -15,12 +15,13 @@ body {
 }
 
 /* Style the form container */
-#question-form {
+#survey-form {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 400px;
+    margin: 20px; /* Add margin for spacing */
 }
 
 /* Style form elements */
@@ -70,48 +71,56 @@ input[type="checkbox"] {
 
 /* Style individual question items */
 .question-item {
-    background-color: #fff;
+    background-color: #f4f4f4; /* Change background color to match the panel */
     border: 1px solid #ccc;
     border-radius: 5px;
+    padding: 20px; /* Adjust padding for spacing */
+    width: 100%; /* Make it full width */
     margin-bottom: 20px;
-    padding: 20px;
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: calc(33.33% - 20px); /* Adjust the width as needed */
-    margin-right: 20px; /* Add margin to create spacing between questions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
-/* Clear the right margin of the third question to prevent wrapping */
-.question-item:nth-child(3) {
-    margin-right: 0;
-}
-
-/* Style the question number */
-.question-number {
+/* Style the text within the question-item */
+.question-item p {
+    margin-bottom: 10px; /* Adjust spacing between text elements */
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
-/* Style the timer display */
-#timer-display {
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
+/* Style options list for multiple-choice questions */
+.question-item ul {
+    list-style-type: none;
+    padding-left: 0;
 }
 
-/* Style the radio buttons */
-input[type="radio"] {
+/* Style individual options */
+.question-item li {
+    display: flex; /* Align items horizontally */
+    align-items: center; /* Center vertically */
+    margin-bottom: 5px;
+}
+
+/* Style radio buttons */
+.question-item input[type="radio"] {
     margin-right: 5px;
     vertical-align: middle;
 }
 
-/* Add some spacing to the options */
-ul {
-    list-style-type: none;
-    padding-left: 20px;
+/* Style labels for options */
+.question-item label {
+    font-weight: normal;
 }
 
-li {
-    margin-bottom: 5px;
+/* Style the open-ended answer textarea */
+.question-item textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+}
+
+/* Style the "Your Answer" label for open-ended questions */
+.question-item label[for="open-ended-answer"] {
+    display: block;
+    margin-top: 10px; /* Adjust spacing from the text above */
 }
