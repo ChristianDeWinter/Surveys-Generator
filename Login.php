@@ -6,6 +6,13 @@ $password="bit_academy";
 $db="bit_academy";
 
 session_start();
+
+$data=mysqli_connect($host,$user,$password,$db);
+
+if ($data===false) {
+	die("connection error");
+}
+
 ?> 
 
 <!DOCTYPE html>  
