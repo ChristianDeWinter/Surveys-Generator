@@ -1,3 +1,13 @@
+<?php
+
+$host="localhost";
+$user="bit_academy";
+$password="bit_academy";
+$db="bit_academy";
+
+session_start();
+?> 
+
 <!DOCTYPE html>  
  <html>  
       <head>  
