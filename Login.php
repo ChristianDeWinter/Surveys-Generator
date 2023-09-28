@@ -7,22 +7,50 @@ $db="bit_academy";
 
 session_start();
 
+
 $data=mysqli_connect($host,$user,$password,$db);
 
 if ($data===false) {
 	die("connection error");
 }
 
-?> 
 
-<!DOCTYPE html>  
+if ($_SERVER["REQUEST_METHOD"]=="POST") {
+	$username=$_POST["username"];
+	$password=$_POST["password"];
+
+
+	$sql="select * from login where username='" . $username . "' AND password='" . $password . "' ";
+
+	$result=mysqli_query($data,$sql);
+
+	$row=mysqli_fetch_array($result);
+
+	if ($row["usertype"]=="user") {
+
+		$_SESSION["username"]=$username;
+		
+		header("location:adminindex.php");
+	} else {
+		echo "username or password incorrect";
+	}
+
+}
+?> 
+  <!DOCTYPE html>  
  <html>  
       <head>  
            <title>Login Page</title>
            <link rel="stylesheet" href="login.css">
       </head>  
       <body>  
-           <br />
+           <br />  
+
+                <?php  
+                if (isset($message)) {  
+                     echo '<label class="mssg">' . $message . '</label>';  
+                }  
+                ?>  
               <div class="center">
       <h1>Login</h1>
       <form method="post">
@@ -42,3 +70,4 @@ if ($data===false) {
 
       </body>  
  </html>  
+
